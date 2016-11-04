@@ -4,14 +4,27 @@ defmodule ExForm do
         []
     end
 
-    def publish(fields, web_hook=nil, tags=nil) do
+    def multiple_choice(state, question, choices, required \\ false, description \\ "") do
+        kind = "multiple_choice"
+        body = %{
+            "type": kind,
+            "question": question,
+            "description": description,
+            "required": required,
+            "choices": Enum.map(choices, fn c -> %{ "label" => c } end)
+        }
+        state ++ [body]
+    end
+
+    def publish(fields, title, web_hook, tags \\ [:deafult]) do
         data = %{
-            "title": "My new Typeform",
-            "tags": ["first-forms"],
-            "webhook_submit_url": "http://requestb.in/116zx9u1",
+            "title": title,
+            "tags": tags,
+            "webhook_submit_url": web_hook,
             "fields": fields
         } |> Poison.encode!
-        response = Tesla.post("http://httpbin.org/post", data, headers: %{"Content-Type" => "application/json"})
+        secret = System.get_env("TYPE_SECRET")
+        response = Tesla.post("https://api.typeform.io/v0.4/forms", data, headers: %{"Content-Type" => "application/json", "X-API-TOKEN" => secret})
         response
     end
 end
