@@ -27,6 +27,9 @@ defmodule ExForm.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+        {:tesla, "~> 0.5.0"},
+        {:poison, ">= 1.0.0"}
+    ] # for JSON middleware
   end
 end
