@@ -1,6 +1,12 @@
 # ExForm
 
 **TODO: Add description**
+## Docs
+[Typeform docs](http://docs.typeform.io/)
+
+## Link for API key
+Sign up for one here.
+
 
 ## Installation
 
@@ -21,4 +27,3 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
       [applications: [:ex_form]]
     end
     ```
-
