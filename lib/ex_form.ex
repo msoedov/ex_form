@@ -16,6 +16,30 @@ defmodule ExForm do
         state ++ [body]
     end
 
+    def short_text(state, question, required \\ false, description \\ "", max_characters \\ nil) do
+        kind = "short_text"
+        body = %{
+          "type": kind,
+          "question": question,
+          "description": description,
+          "required": required,
+          "max_characters": max_characters
+        }
+        state ++ [body]
+    end
+
+    def long_text(state, question, required \\ false, description \\ "", max_characters \\ nil) do
+        kind = "short_text"
+        body = %{
+          "type": kind,
+          "question": question,
+          "description": description,
+          "required": required,
+          "max_characters": max_characters
+        }
+        state ++ [body]
+    end
+
     def publish(fields, title, web_hook, tags \\ [:deafult]) do
         data = %{
             "title": title,
