@@ -21,52 +21,31 @@ defmodule ExForm do
         build(state, "multiple_choice", question = question, extras = extras, opts = opts)
     end
 
-    def short_text(state, question, required \\ false, description \\ "", max_characters \\ nil) do
-        kind = "short_text"
-        body = %{
-          "type": kind,
-          "question": question,
-          "description": description,
-          "required": required,
-          "max_characters": max_characters
-        }
-        state ++ [body]
+    def short_text(state, question, max_characters \\ nil, opts \\ []) do
+        extras = case max_characters do
+            nil -> %{}
+            _ -> %{"max_characters": max_characters}
+        end
+        build(state, "short_text", question = question, extras = extras, opts = opts)
     end
 
-    def long_text(state, question, required \\ false, description \\ "", max_characters \\ nil) do
-        kind = "short_text"
-        body = %{
-          "type": kind,
-          "question": question,
-          "description": description,
-          "required": required,
-          "max_characters": max_characters
-        }
-        state ++ [body]
+    def long_text(state, question, max_characters \\ nil, opts \\ []) do
+        extras = case max_characters do
+            nil -> %{}
+            _ -> %{"max_characters": max_characters}
+        end
+        build(state, "long_text", question = question, extras = extras, opts = opts)
     end
 
-    def yes_no(state, question, required \\ false, description \\ "") do
-        kind = "yes_no"
-        body = %{
-          "type": kind,
-          "question": question,
-          "description": description,
-          "required": required,
-        }
-        state ++ [body]
+    def yes_no(state, question, opts \\ []) do
+        build(state, "yes_no", question = question, extras = %{}, opts = opts)
     end
 
-    def number(state, question, required \\ false, description \\ "", min_value \\ nil,  max_value \\ nil) do
-        kind = "number"
-        body = %{
-          "type": kind,
-          "question": question,
-          "description": description,
-          "min_value": min_value,
-          "max_value": max_value,
-          "required": required,
-        }
-        state ++ [body]
+    def number(state, question, min_value \\ nil,  max_value \\ nil, opts \\ []) do
+        extras = %{}
+        extras = if min_value, do: Dict.put(extras, "min_value", min_value), else: extras
+        extras = if max_value, do: Dict.put(extras, "max_value", max_value), else: extras
+        build(state, "number", question = question, extras = extras, opts = opts)
     end
 
     def rating(state, question, required \\ false, description \\ "", steps \\ 5,  shape \\ "star") do
