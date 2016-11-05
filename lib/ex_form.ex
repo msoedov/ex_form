@@ -40,6 +40,30 @@ defmodule ExForm do
         state ++ [body]
     end
 
+    def yes_no(state, question, required \\ false, description \\ "") do
+        kind = "yes_no"
+        body = %{
+          "type": kind,
+          "question": question,
+          "description": description,
+          "required": required,
+        }
+        state ++ [body]
+    end
+
+    def number(state, question, required \\ false, description \\ "", min_value \\ nil,  max_value \\ nil) do
+        kind = "number"
+        body = %{
+          "type": kind,
+          "question": question,
+          "description": description,
+          "min_value": min_value,
+          "max_value": max_value,
+          "required": required,
+        }
+        state ++ [body]
+    end
+
     def publish(fields, title, web_hook, tags \\ [:deafult]) do
         data = %{
             "title": title,
