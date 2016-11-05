@@ -8,7 +8,8 @@ defmodule ExFormTest do
     r = ExForm.new |> ExForm.multiple_choice("What's going on", [
         "A", "B", "C"
         ]) |> ExForm.publish("Hallo", @hook)
-    assert r.status == 201, r.body
+
+    assert match?({:ok, p}, r)
   end
 
   test "test all in once" do
@@ -24,7 +25,7 @@ defmodule ExFormTest do
     |> ExForm.opinion_scale("Rate this test?", "Crap", "Okay", "Awesome")
     |> ExForm.rating("Whatever")
     |> ExForm.publish("Hallo", @hook)
-    assert r.status == 201, r.body
+    assert match?({:ok, p}, r)
   end
 
 end

@@ -70,15 +70,27 @@ defmodule ExForm do
         append(state, "opinion_scale", question = question, extras = extras, opts = opts)
     end
 
-    def publish(fields, title, web_hook, tags \\ [:deafult]) do
+    def build(fields, title, web_hook, tags \\ [:deafult]) do
         data = %{
             "title": title,
             "tags": tags,
             "webhook_submit_url": web_hook,
             "fields": fields
-        } |> Poison.encode!
+        }
+    end
+
+    def publish(fields, title, web_hook, tags \\ [:deafult]) do
+        build(fields, title, web_hook, tags) |> typeform_publish()
+    end
+
+    def typeform_publish(data) do
+        data = data |> Poison.encode!
         secret = System.get_env("TYPE_SECRET")
-        response = Tesla.post("https://api.typeform.io/v0.4/forms", data, headers: %{"Content-Type" => "application/json", "X-API-TOKEN" => secret})
-        response
+        headers = %{"Content-Type" => "application/json", "X-API-TOKEN" => secret}
+        response = Tesla.post("https://api.typeform.io/v0.4/forms", data, headers: headers)
+        case response.status do
+            201 -> {:ok, Poison.decode!(response.body)}
+            _ -> {:error, Poison.decode(response.body)}
+        end
     end
 end
