@@ -29,7 +29,8 @@ defmodule ExForm.Mixfile do
   defp deps do
     [
         {:tesla, "~> 0.5.0"},
-        {:poison, ">= 1.0.0"}
-    ] # for JSON middleware
+        {:poison, ">= 1.0.0"},
+        {:credo, "~> 0.4", only: [:dev, :test]}
+    ]
   end
 end

@@ -1,2 +1,5 @@
-%{"poison": {:hex, :poison, "3.0.0", "625ebd64d33ae2e65201c2c14d6c85c27cc8b68f2d0dd37828fde9c6920dd131", [:mix], []},
+%{"bunt": {:hex, :bunt, "0.1.6", "5d95a6882f73f3b9969fdfd1953798046664e6f77ec4e486e6fafc7caad97c6f", [:mix], []},
+  "credo": {:hex, :credo, "0.5.1", "2395862b94628cadf0f5c68975c1440393f425b955f1e70ce1aea267e00187a1", [:mix], [{:bunt, "~> 0.1.6", [hex: :bunt, optional: false]}]},
+  "dogma": {:hex, :dogma, "0.1.13", "7b6c6ad2b3ee6501eda3bd39e197dd5198be8d520d1c175c7f713803683cf27a", [:mix], [{:poison, ">= 2.0.0", [hex: :poison, optional: false]}]},
+  "poison": {:hex, :poison, "3.0.0", "625ebd64d33ae2e65201c2c14d6c85c27cc8b68f2d0dd37828fde9c6920dd131", [:mix], []},
   "tesla": {:hex, :tesla, "0.5.2", "614297046c638b8c1695e8b6e63e6bffd107c07a67e4cb8cc4bb46598be735f1", [:mix], [{:exjsx, ">= 0.1.0", [hex: :exjsx, optional: true]}, {:hackney, "~> 1.6.0", [hex: :hackney, optional: true]}, {:ibrowse, "~> 4.2", [hex: :ibrowse, optional: true]}, {:poison, ">= 1.0.0", [hex: :poison, optional: true]}]}}

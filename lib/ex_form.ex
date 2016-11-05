@@ -11,7 +11,7 @@ defmodule ExForm do
             "question": question,
             "description": description,
             "required": required,
-            "choices": Enum.map(choices, fn c -> %{ "label" => c } end)
+            "choices": Enum.map(choices, fn c -> %{"label" => c} end)
         }
         state ++ [body]
     end
