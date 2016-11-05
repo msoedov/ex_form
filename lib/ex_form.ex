@@ -1,5 +1,9 @@
 defmodule ExForm do
+    @moduledoc """
 
+    Api wrapper module for http://docs.typeform.io
+    
+    """
     def new do
         []
     end
