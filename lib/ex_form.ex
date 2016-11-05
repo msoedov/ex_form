@@ -48,27 +48,17 @@ defmodule ExForm do
         build(state, "number", question = question, extras = extras, opts = opts)
     end
 
-    def rating(state, question, required \\ false, description \\ "", steps \\ 5,  shape \\ "star") do
-        kind = "number"
-        body = %{
-          "type": kind,
-          "question": question,
-          "description": description,
-          "steps": steps,
+    def rating(state, question, steps \\ 5,  shape \\ "star", opts \\ []) do
+        extras = %{
           "shape": shape,
-          "required": required,
+          "steps": steps,
         }
-        state ++ [body]
+        build(state, "rating", question = question, extras = extras, opts = opts)
     end
 
-    def opinion_scale(state, question, left, center, right, required \\ false, description \\ "", steps \\ 11, start_at_one \\ false) do
-        kind = "number"
-        body = %{
-          "type": kind,
-          "question": question,
-          "description": description,
-          "required": required,
-          "label": %{
+    def opinion_scale(state, question, left, center, right, steps \\ 11, start_at_one \\ false, opts \\ []) do
+        extras = %{
+          "labels": %{
               "left": left,
               "center": center,
               "right": right
@@ -77,7 +67,7 @@ defmodule ExForm do
           "start_at_one": start_at_one
 
         }
-        state ++ [body]
+        build(state, "opinion_scale", question = question, extras = extras, opts = opts)
     end
 
     def publish(fields, title, web_hook, tags \\ [:deafult]) do

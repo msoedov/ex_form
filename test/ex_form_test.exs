@@ -21,9 +21,8 @@ defmodule ExFormTest do
     |> ExForm.long_text("Long test here")
     |> ExForm.yes_no("Will Trump win?")
     |> ExForm.number("Lucky number?")
-    # |> ExForm.opinion_scale("Rate this test?", "Crap", "Okay", "Awesome")
-    # |> ExForm.short_text("Shorter text", max_characters = 14)
-    # |> ExForm.rating("Whatever")
+    |> ExForm.opinion_scale("Rate this test?", "Crap", "Okay", "Awesome")
+    |> ExForm.rating("Whatever")
     |> ExForm.publish("Hallo", @hook)
     assert r.status == 201, r.body
   end
