@@ -64,6 +64,38 @@ defmodule ExForm do
         state ++ [body]
     end
 
+    def rating(state, question, required \\ false, description \\ "", steps \\ 5,  shape \\ "star") do
+        kind = "number"
+        body = %{
+          "type": kind,
+          "question": question,
+          "description": description,
+          "steps": steps,
+          "shape": shape,
+          "required": required,
+        }
+        state ++ [body]
+    end
+
+    def opinion_scale(state, question, left, center, right, required \\ false, description \\ "", steps \\ 11, start_at_one \\ false) do
+        kind = "number"
+        body = %{
+          "type": kind,
+          "question": question,
+          "description": description,
+          "required": required,
+          "label": %{
+              "left": left,
+              "center": center,
+              "right": right
+          },
+          "steps": steps,
+          "start_at_one": start_at_one
+
+        }
+        state ++ [body]
+    end
+
     def publish(fields, title, web_hook, tags \\ [:deafult]) do
         data = %{
             "title": title,
