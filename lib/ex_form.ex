@@ -5,8 +5,8 @@ defmodule ExForm do
     end
 
     defp build(state, kind, question, extras, opts) do
-        required = Keyword.fetch!(opts, :required)
-        description = Keyword.fetch!(opts, :description)
+        required = Keyword.get(opts, :required, false)
+        description = Keyword.get(opts, :description, "")
         data = %{
             "type": kind,
             "question": question,
@@ -16,7 +16,7 @@ defmodule ExForm do
         state ++ [Dict.merge(data, extras)]
     end
 
-    def multiple_choice(state, question, choices, opts \\ [required: false, description: ""]) do
+    def multiple_choice(state, question, choices, opts \\ []) do
         extras = %{"choices": Enum.map(choices, fn c -> %{"label" => c} end)}
         build(state, "multiple_choice", question = question, extras = extras, opts = opts)
     end
