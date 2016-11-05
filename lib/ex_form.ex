@@ -2,7 +2,7 @@ defmodule ExForm do
     @moduledoc """
 
     Api wrapper module for http://docs.typeform.io
-    
+
     """
     def new do
         []
@@ -60,6 +60,7 @@ defmodule ExForm do
         append(state, "rating", question = question, extras = extras, opts = opts)
     end
 
+    @lint false
     def opinion_scale(state, question, left, center, right, steps \\ 11, start_at_one \\ false, opts \\ []) do
         extras = %{
           "labels": %{
@@ -84,7 +85,8 @@ defmodule ExForm do
     end
 
     def publish(fields, title, web_hook, tags \\ [:deafult]) do
-        build(fields, title, web_hook, tags) |> typeform_publish()
+        tp = build(fields, title, web_hook, tags)
+        typeform_publish(tp)
     end
 
     def typeform_publish(data) do
