@@ -41,7 +41,8 @@ defmodule ExForm.Mixfile do
     [
         {:tesla, "~> 0.5.0"},
         {:poison, ">= 1.0.0"},
-        {:credo, "~> 0.4", only: [:dev, :test]}
+        {:credo, "~> 0.4", only: [:dev, :test]},
+         {:ex_doc, ">= 0.0.0", only: :dev}
     ]
   end
 end
