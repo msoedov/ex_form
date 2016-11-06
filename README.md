@@ -1,7 +1,9 @@
 # ExForm
 
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/msoedov/ex_form/blob/master/LICENSE)
-
+[![Deps Status](https://beta.hexfaktor.org/badge/all/github/msoedov/ex_form.svg)](https://beta.hexfaktor.org/github/msoedov/ex_form)
+[![Inline docs](https://inch-ci.org/github/msoedov/ex_form.svg?branch=master)](https://inch-ci.org/github/msoedov/ex_form) [![Hex Version](https://img.shields.io/hexpm/v/ex_form.svg)](https://hex.pm/packages/ex_form)
+[![Code TriagersBadge](https://www.codetriage.com/msoedov/ex_form/badges/users.svg)](https://www.codetriage.com/msoedov/ex_form)
 
 Simplistic api wrapper for Typeform api without abusing macro/dsl.
 
