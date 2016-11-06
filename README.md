@@ -1,11 +1,13 @@
 # ExForm
 
-**TODO: Add description**
-## Docs
-[Typeform docs](http://docs.typeform.io/)
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)]()
+
+
+An api wrapper for Typeform api.
+For more information about api check [Typeform docs](http://docs.typeform.io/)
 
 ## Link for API key
-Sign up for one here.
+Sign up for [one here](http://docs.typeform.io/page/signup).
 
 
 ## Installation
@@ -27,3 +29,18 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
       [applications: [:ex_form]]
     end
     ```
+
+## Examples
+
+```elixir
+r = ExForm.new
+|> ExForm.multiple_choice("What's going on", ["A", "B", "C"])
+|> ExForm.short_text("Shorter text", max_characters = 14)
+|> ExForm.short_text("Shorter text default")
+|> ExForm.long_text("Long test here")
+|> ExForm.yes_no("Will Trump win?")
+|> ExForm.number("Lucky number?")
+|> ExForm.opinion_scale("Rate this test?", "Crap", "Okay", "Awesome")
+|> ExForm.rating("Whatever")
+|> ExForm.publish("Hallo", "http://requestb.in/112mjyd1")
+```
