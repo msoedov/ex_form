@@ -1,6 +1,6 @@
 # ExForm
 
-[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)]()
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/msoedov/ex_form/blob/master/LICENSE)
 
 
 Simplistic api wrapper for Typeform api without abusing macro/dsl.
