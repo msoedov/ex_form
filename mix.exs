@@ -7,7 +7,10 @@ defmodule ExForm.Mixfile do
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps()]
+     deps: deps(),
+     description: "Api wrapper for Typeform",
+     package: package()
+    ]
   end
 
   # Configuration for the OTP application
@@ -17,6 +20,14 @@ defmodule ExForm.Mixfile do
     [applications: [:logger]]
   end
 
+  defp package do
+      [
+        files: ["lib", "mix.exs", "README.md", "LICENSE"],
+        maintainers: ["Alex Myasoedov"],
+        licenses: ["MIT"],
+        links: %{"GitHub" => "https://github.com/msoedov/ex_form"},
+      ]
+    end
   # Dependencies can be Hex packages:
   #
   #   {:mydep, "~> 0.3.0"}
